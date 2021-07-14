@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="716daa0e-244a-446b-bd94-17274883d328" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
@@ -11,5 +12,10 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<http:listener doc:name="Listener" doc:id="f1c5ba41-1392-400b-9c83-087e648ca250" config-ref="HTTP_Listener_config" path="/cicd"/>
 		<set-payload value='#["CICD implementaion"]' doc:name="Set Payload" doc:id="f970daba-76e9-4cfe-86df-64c86277f6a6" />
 		<logger level="INFO" doc:name="Logger" doc:id="4e53d722-6b2e-405a-a1c7-5e4c53ff5830" />
+		<ee:transform doc:name="Transform Message" doc:id="558536a8-253d-4df3-a62d-315386510a26" >
+			<ee:message >
+				<ee:set-payload ><![CDATA["Successflly modified the code"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
 	</flow>
 </mule>
