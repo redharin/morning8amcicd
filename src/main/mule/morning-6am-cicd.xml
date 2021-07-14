@@ -10,5 +10,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<flow name="morning-6am-cicdFlow" doc:id="48ee83ef-60fa-4a96-a796-954227875fc4" >
 		<http:listener doc:name="Listener" doc:id="f1c5ba41-1392-400b-9c83-087e648ca250" config-ref="HTTP_Listener_config" path="/cicd"/>
 		<set-payload value='#["CICD implementaion"]' doc:name="Set Payload" doc:id="f970daba-76e9-4cfe-86df-64c86277f6a6" />
+		<logger level="INFO" doc:name="Logger" doc:id="4e53d722-6b2e-405a-a1c7-5e4c53ff5830" />
 	</flow>
 </mule>
